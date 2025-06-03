@@ -1,9 +1,74 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.HamletMovie" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+
+    <style name="Base.Theme.MovieApp" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+
+        <item name="colorPrimary">@color/primary_red</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/text_primary</item>
+        <item name="colorSecondary">@color/accent_gold</item>
+        <item name="colorOnSecondary">@color/background_primary</item>
+        <item name="colorSurface">@color/background_secondary</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="android:colorBackground">@color/background_primary</item>
+        <item name="colorOnBackground">@color/text_primary</item>
+        <item name="colorError">@color/error</item>
+
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
     </style>
 
-    <style name="Theme.HamletMovie" parent="Base.Theme.HamletMovie" />
+    <style name="Theme.MovieApp" parent="Base.Theme.MovieApp" />
+
+    <style name="MovieCard">
+        <item name="cardBackgroundColor">@color/background_card</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">8dp</item>
+        <item name="cardUseCompatPadding">true</item>
+    </style>
+
+    <style name="MovieTitle">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="MovieSubtitle">
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="SectionTitle">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="RatingText">
+        <item name="android:textColor">@color/rating_star</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="PrimaryButton" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/primary_red</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SecondaryButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/text_secondary</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
 </resources>

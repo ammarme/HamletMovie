@@ -2,4 +2,38 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="primary_red">#E50914</color>
+    <color name="primary_dark">#0F0F0F</color>
+    <color name="primary_surface">#141414</color>
+    <color name="primary_surface_variant">#1F1F1F</color>
+
+    <color name="background_primary">#000000</color>
+    <color name="background_secondary">#141414</color>
+    <color name="background_card">#1F1F1F</color>
+    <color name="background_overlay">#80000000</color>
+
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B3B3B3</color>
+    <color name="text_tertiary">#808080</color>
+    <color name="text_accent">#E50914</color>
+
+    <color name="accent_gold">#FFD700</color>
+    <color name="rating_star">#FFC107</color>
+    <color name="success">#4CAF50</color>
+    <color name="error">#F44336</color>
+
+    <color name="gradient_start">#00000000</color>
+    <color name="gradient_end">#CC000000</color>
+
+    <color name="colorPrimaryRed">#E50914</color>
+    <color name="colorPrimaryBlack">#FF000000</color>
+    <color name="backgroundAttachedImages">#1F1F1F</color>
+    <color name="listItemSearch">#1F1F1F</color>
+    <color name="textBlackTransparentColor">#3B131819</color>
+    <color name="textColorTransparent">#4D131819</color>
+    <color name="colorBlackTransparent">#8D131819</color>
+    <color name="colorWhiteTransparent">#F1F1F1</color>
+    <color name="colorRed">#E50914</color>
+    <color name="colorDividerLight">#66D0D8DA</color>
 </resources>
