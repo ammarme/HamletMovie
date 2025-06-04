@@ -5,23 +5,20 @@
   Browse the latest movies with seamless infinite scrolling.
 
 
+https://github.com/user-attachments/assets/571ada28-d925-4668-8b14-ffa7af048469
 
 
-https://github.com/user-attachments/assets/722d8cfe-565c-4cec-97a2-7900fcea5c51
 
 
-
-- **Auto-complete Search**  
+- **Search feature with an auto-complete function**  
   Search for movies with a fast, real-time suggestion dropdown.
 
-
-https://github.com/user-attachments/assets/f03b5c4d-b089-4089-80cf-74f57bc9392c
-
+https://github.com/user-attachments/assets/5a2cf0c5-66cf-468d-9348-93a000de6e5a
 
 
 
 - **Movie Detail View**  
-  A simplified detail screen for each movie including:
+  A simplified detail screen for each movie, including:
     - Poster
     - Cover
     - Title, Release date
@@ -29,14 +26,19 @@ https://github.com/user-attachments/assets/f03b5c4d-b089-4089-80cf-74f57bc9392c
     - Votes
     - Language
 
-https://github.com/user-attachments/assets/9724b67e-78af-41d5-8b2a-9091cffd62ef
+
+https://github.com/user-attachments/assets/4a2a1c8b-775a-486b-ab75-468c7318898e
+
 
 
 
 - The app is designed to work properly even when there is no internet connection.
 
 
-https://github.com/user-attachments/assets/407c6d36-ab3f-4f2f-bcd3-03403ca7b6b1
+
+https://github.com/user-attachments/assets/224b5c9f-b37d-4c5c-be5c-569b06d2f2c5
+
+
 
 
 
@@ -46,11 +48,7 @@ https://github.com/user-attachments/assets/407c6d36-ab3f-4f2f-bcd3-03403ca7b6b1
 
 
 
-
-
-
-
-Model-View-ViewModel (i.e. MVVM) is a client application architecture template proposed by John Gossman as an alternative to MVC and MVP patterns when using Data Binding technology. Its concept separates data presentation logic from business logic by moving it into a particular class for a clear distinction.
+Model-View-ViewModel (MVVM) is a client application architecture template proposed by John Gossman as an alternative to the MVC and MVP patterns when using Data Binding technology. Its concept separates data presentation logic from business logic by moving it into a specific class, allowing for a clear distinction.
 
 ![MVVM3](https://user-images.githubusercontent.com/1812129/68319232-446cf900-00be-11ea-92cf-cad817b2af2c.png)
 
@@ -61,7 +59,7 @@ Model-View-ViewModel (i.e. MVVM) is a client application architecture template p
 - ViewModel survives configuration changes, while it is your responsibility to survive the configuration changes in the Presenter's case. (Saving and restoring the UI state)
 
 
-**MVVM Best Pratice:**
+**MVVM Best Practice:**
 - Avoid references to Views in ViewModels.
 - Instead of pushing data to the UI, let the UI observe changes.
 - Distribute responsibilities, and add a domain layer if needed.
@@ -74,10 +72,9 @@ Model-View-ViewModel (i.e. MVVM) is a client application architecture template p
 **Keep your code clean according to MVVM**
 -----------------------------
 - Yes, liveData is easy and powerful, but you should know how to use it.
-- For live date which will emit data stream, it has to be in your
-  data layer and don't inform those observables anything else like
-  in which thread those will consume, cause it is another
-- For live-data that emits UI binding events, it must be in your ViewModel Layer.
+- For a live date that will emit a data stream, it has to be in your
+  data layer and don't inform those observables anything else, like which thread they will consume, cause it is another
+- For live data that emits UI binding events, it must be in your ViewModel Layer.
 - Observers in UI Consume and react to live data values and bind them.
   responsibility, and according to `Single responsibility principle`
   in `SOLID (object-oriented design)` , so don't break this concept by
