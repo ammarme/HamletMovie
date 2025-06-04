@@ -80,10 +80,16 @@ class SearchFragment : Fragment() {
             if (query.length >= 2) {
                 showFullResults = false
                 viewModel.searchMovies(query)
+
+                // Add subtle animation to search icon
+                binding.searchEditText.compoundDrawables.forEach { drawable ->
+                    drawable?.let {
+                        it.alpha = 255
+                    }
+                }
             } else {
                 viewModel.clearResults()
-                binding.autocompleteRecyclerView.visibility = View.GONE
-                binding.searchRecyclerView.visibility = View.GONE
+                hideAllResults()
             }
         }
 
@@ -93,6 +99,7 @@ class SearchFragment : Fragment() {
                 if (query.isNotEmpty()) {
                     showFullResults = true
                     viewModel.searchMovies(query)
+                    hideKeyboard()
                 }
                 true
             } else {
@@ -110,13 +117,10 @@ class SearchFragment : Fragment() {
             viewModel.searchResults.collect { movies ->
                 if (showFullResults) {
                     searchAdapter.submitList(movies)
-                    binding.searchRecyclerView.visibility = View.VISIBLE
-                    binding.autocompleteRecyclerView.visibility = View.GONE
+                    showSearchResults()
                 } else {
-                    autocompleteAdapter.submitList(movies.take(10))
-                    binding.autocompleteRecyclerView.visibility =
-                        if (movies.isEmpty()) View.GONE else View.VISIBLE
-                    binding.searchRecyclerView.visibility = View.GONE
+                    autocompleteAdapter.submitList(movies.take(8)) // Reduced for better UX
+                    showAutocompleteResults(movies.isNotEmpty())
                 }
 
                 binding.emptyStateText.visibility =
@@ -131,6 +135,34 @@ class SearchFragment : Fragment() {
         }
     }
 
+    private fun showSearchResults() {
+        binding.searchRecyclerView.visibility = View.VISIBLE
+        binding.autocompleteRecyclerView.apply {
+            visibility = View.GONE
+            animate()
+                .alpha(0f)
+                .setDuration(200)
+                .start()
+        }
+    }
+
+    private fun showAutocompleteResults(hasResults: Boolean) {
+        if (hasResults) {
+            binding.autocompleteRecyclerView.apply {
+                visibility = View.VISIBLE
+                alpha = 0f
+                animate()
+                    .alpha(1f)
+                    .setDuration(300)
+                    .start()
+            }
+            binding.searchRecyclerView.visibility = View.GONE
+        } else {
+            binding.autocompleteRecyclerView.visibility = View.GONE
+            binding.searchRecyclerView.visibility = View.GONE
+        }
+    }
+
     private fun selectSuggestion(movie: Movie) {
         binding.searchEditText.setText(movie.title)
         binding.searchEditText.setSelection(movie.title.length)
@@ -140,6 +172,16 @@ class SearchFragment : Fragment() {
 
         binding.autocompleteRecyclerView.visibility = View.GONE
         binding.searchRecyclerView.visibility = View.VISIBLE
+    }
+
+    private fun hideAllResults() {
+        binding.autocompleteRecyclerView.visibility = View.GONE
+        binding.searchRecyclerView.visibility = View.GONE
+    }
+
+    private fun hideKeyboard() {
+        val imm = requireContext().getSystemService(InputMethodManager::class.java)
+        imm?.hideSoftInputFromWindow(binding.searchEditText.windowToken, 0)
     }
 
     override fun onDestroyView() {

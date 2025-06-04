@@ -1,7 +1,11 @@
 package com.android.movieapp.ui.search
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +26,7 @@ class AutocompleteAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), position)
     }
 
     inner class ViewHolder(
@@ -33,13 +37,54 @@ class AutocompleteAdapter(
             binding.root.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
+                    // Add click animation
+                    animateClick()
                     onItemClick(getItem(position))
                 }
             }
         }
 
-        fun bind(movie: Movie) {
+        fun bind(movie: Movie, position: Int) {
             binding.titleTextView.text = movie.title
+
+            // Show year if available
+            if (movie.release_date.isNotEmpty()) {
+                val year = movie.release_date.substring(0, 4)
+                binding.yearTextView.text = year
+                binding.yearTextView.visibility = View.VISIBLE
+            } else {
+                binding.yearTextView.visibility = View.GONE
+            }
+
+            // Add entrance animation
+            animateEntrance(position)
+        }
+
+        private fun animateEntrance(position: Int) {
+            val delay = position * 50L // Stagger animations
+
+            binding.root.alpha = 0f
+            binding.root.translationX = 100f
+
+            val fadeIn = ObjectAnimator.ofFloat(binding.root, "alpha", 0f, 1f)
+            val slideIn = ObjectAnimator.ofFloat(binding.root, "translationX", 100f, 0f)
+
+            val animatorSet = AnimatorSet()
+            animatorSet.playTogether(fadeIn, slideIn)
+            animatorSet.duration = 300
+            animatorSet.startDelay = delay
+            animatorSet.interpolator = AccelerateDecelerateInterpolator()
+            animatorSet.start()
+        }
+
+        private fun animateClick() {
+            val scaleX = ObjectAnimator.ofFloat(binding.root, "scaleX", 1f, 0.95f, 1f)
+            val scaleY = ObjectAnimator.ofFloat(binding.root, "scaleY", 1f, 0.95f, 1f)
+
+            val animatorSet = AnimatorSet()
+            animatorSet.playTogether(scaleX, scaleY)
+            animatorSet.duration = 150
+            animatorSet.start()
         }
     }
 

@@ -15,11 +15,13 @@
         <ImageView
             android:id="@+id/posterImage"
             android:layout_width="0dp"
-            android:layout_height="300dp"
-            android:adjustViewBounds="true"
+            android:layout_height="0dp"
+            android:adjustViewBounds="false"
+            android:minHeight="300dp"
             android:background="@color/background_secondary"
             android:contentDescription="Movie Poster"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="2:3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
