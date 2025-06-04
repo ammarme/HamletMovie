@@ -40,6 +40,10 @@ class HomeFragment : Fragment(), ConnectivityRestoredListener {
         setupSearchButton()
         observeHomeState()
         viewModel.loadMovies()
+
+        binding.scrollToTopButton.setOnClickListener {
+            binding.recyclerView.scrollToPosition(0)
+        }
     }
 
     private fun setupRecyclerView() {
@@ -61,6 +65,9 @@ class HomeFragment : Fragment(), ConnectivityRestoredListener {
                     val visibleItemCount = layoutManager.childCount
                     val totalItemCount = layoutManager.itemCount
                     val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
+
+                    binding.scrollToTopButton.visibility =
+                        if (firstVisibleItemPosition > 5) View.VISIBLE else View.GONE
 
                     val state = viewModel.homeState.value
                     val isLoading = state is HomeState.Loading
