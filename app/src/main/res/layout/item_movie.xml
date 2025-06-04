@@ -8,18 +8,19 @@
     app:cardElevation="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_movie_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorSurface">
 
         <ImageView
-            android:id="@+id/posterImage"
+            android:id="@+id/iv_movie_poster"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:contentDescription="@string/movie_poster_description"
             android:adjustViewBounds="false"
-            android:minHeight="300dp"
             android:background="@color/background_secondary"
-            android:contentDescription="Movie Poster"
+            android:minHeight="300dp"
             android:scaleType="centerCrop"
             app:layout_constraintDimensionRatio="2:3"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,16 +28,16 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:id="@+id/overlay"
+            android:id="@+id/view_gradient_overlay"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:background="@drawable/gradient_overlay"
-            app:layout_constraintBottom_toBottomOf="@id/posterImage"
-            app:layout_constraintEnd_toEndOf="@id/posterImage"
-            app:layout_constraintStart_toStartOf="@id/posterImage" />
+            app:layout_constraintBottom_toBottomOf="@id/iv_movie_poster"
+            app:layout_constraintEnd_toEndOf="@id/iv_movie_poster"
+            app:layout_constraintStart_toStartOf="@id/iv_movie_poster" />
 
         <TextView
-            android:id="@+id/titleText"
+            android:id="@+id/tv_movie_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
@@ -50,12 +51,12 @@
             android:shadowDy="1"
             android:shadowRadius="2"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@id/ratingText"
+            app:layout_constraintBottom_toTopOf="@id/tv_movie_rating"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/ratingText"
+            android:id="@+id/tv_movie_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -68,11 +69,11 @@
             android:shadowDy="1"
             android:shadowRadius="2"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@id/posterImage"
+            app:layout_constraintBottom_toBottomOf="@id/iv_movie_poster"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/releaseDateText"
+            android:id="@+id/tv_release_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
@@ -84,7 +85,7 @@
             android:shadowDy="1"
             android:shadowRadius="2"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@id/posterImage"
+            app:layout_constraintBottom_toBottomOf="@id/iv_movie_poster"
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

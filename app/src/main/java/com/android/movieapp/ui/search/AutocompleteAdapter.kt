@@ -37,7 +37,6 @@ class AutocompleteAdapter(
             binding.root.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    // Add click animation
                     animateClick()
                     onItemClick(getItem(position))
                 }
@@ -47,7 +46,6 @@ class AutocompleteAdapter(
         fun bind(movie: Movie, position: Int) {
             binding.titleTextView.text = movie.title
 
-            // Show year if available
             if (movie.release_date.isNotEmpty()) {
                 val year = movie.release_date.substring(0, 4)
                 binding.yearTextView.text = year
@@ -56,12 +54,11 @@ class AutocompleteAdapter(
                 binding.yearTextView.visibility = View.GONE
             }
 
-            // Add entrance animation
             animateEntrance(position)
         }
 
         private fun animateEntrance(position: Int) {
-            val delay = position * 50L // Stagger animations
+            val delay = position * 50L
 
             binding.root.alpha = 0f
             binding.root.translationX = 100f

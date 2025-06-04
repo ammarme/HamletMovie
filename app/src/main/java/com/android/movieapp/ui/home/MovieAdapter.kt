@@ -31,11 +31,11 @@ class MovieAdapter(
 
         fun bind(movie: Movie) {
             binding.apply {
-                titleText.text = movie.title
-                ratingText.text = String.format(Locale.US, "★ %.1f", movie.vote_average)
-                releaseDateText.text = movie.release_date
+                tvMovieTitle.text = movie.title
+                tvMovieRating.text = String.format(Locale.US, "★ %.1f", movie.vote_average)
+                tvReleaseDate.text = movie.release_date
 
-                posterImage.load("${Constants.IMAGE_BASE_URL}w500${movie.poster_path}") {
+                ivMoviePoster.load("${Constants.IMAGE_BASE_URL}w500${movie.poster_path}") {
                     crossfade(true)
                     placeholder(R.drawable.pulse_loader)
                     error(R.drawable.pulse_loader)
