@@ -5,6 +5,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+    id("org.jetbrains.kotlin.plugin.compose") version "2.0.0"
 }
 
 android {
@@ -48,6 +49,11 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "2.0.0"
     }
 }
 
@@ -98,6 +104,25 @@ dependencies {
     androidTestImplementation (libs.androidx.hilt.work)
 
     testImplementation (libs.androidx.lifecycle.livedata.ktx)
+
+    // Jetpack Compose BOM
+    val composeBom = platform("androidx.compose:compose-bom:2024.05.00")
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+
+    // Compose UI
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.foundation)
+    //noinspection UseTomlInstead
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.ui.tooling.preview)
+    debugImplementation(libs.androidx.ui.tooling)
+
+    // Activity Compose integration
+    implementation(libs.androidx.activity.compose)
+
+    // Coil for Compose
+    implementation(libs.coil.compose)
 }
 kapt {
     correctErrorTypes = true

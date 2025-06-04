@@ -67,6 +67,13 @@ class DetailsFragment : Fragment() {
                 placeholder(R.drawable.pulse_loader)
                 error(R.drawable.pulse_loader)
             }
+
+            posterImage.setOnClickListener {
+                val action = DetailsFragmentDirections.actionDetailsFragmentToImageViewerFragment(
+                    imageUrl = "https://image.tmdb.org/t/p/w500${movie.poster_path}"
+                )
+                findNavController().navigate(action)
+            }
         }
     }
 
