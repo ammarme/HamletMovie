@@ -36,4 +36,5 @@
     <color name="colorWhiteTransparent">#F1F1F1</color>
     <color name="colorRed">#E50914</color>
     <color name="colorDividerLight">#66D0D8DA</color>
+    <color name="button_search_background">#40FFFFFF</color>
 </resources>

@@ -10,6 +10,7 @@ import coil.load
 import com.android.movieapp.R
 import com.android.movieapp.databinding.ItemSearchMovieBinding
 import com.android.movieapp.model.Movie
+import com.android.movieapp.util.Constants
 
 class SearchAdapter(
     private val onMovieClick: (Movie) -> Unit
@@ -37,7 +38,7 @@ class SearchAdapter(
                 ratingText.text = "★ ${String.format("%.1f", movie.vote_average)}"
                 releaseDateText.text = movie.release_date
 
-                posterImage.load("https://image.tmdb.org/t/p/w200${movie.poster_path}") {
+                posterImage.load("${Constants.IMAGE_BASE_URL}w200${movie.poster_path}") {
                     crossfade(true)
                     placeholder(R.drawable.pulse_loader)
                     error(R.drawable.pulse_loader)

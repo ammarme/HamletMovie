@@ -6,7 +6,7 @@
         android:id="@+id/action_search"
         android:icon="@drawable/baseline_search_24"
         android:title="@string/search"
-        app:iconTint="@android:color/holo_red_dark"
+        app:iconTint="@color/text_primary"
         app:showAsAction="always" />
 
 </menu>

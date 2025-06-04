@@ -9,6 +9,7 @@ import coil.load
 import com.android.movieapp.R
 import com.android.movieapp.databinding.ItemMovieBinding
 import com.android.movieapp.model.Movie
+import com.android.movieapp.util.Constants
 import java.util.Locale
 
 class MovieAdapter(
@@ -34,7 +35,7 @@ class MovieAdapter(
                 ratingText.text = String.format(Locale.US, "★ %.1f", movie.vote_average)
                 releaseDateText.text = movie.release_date
 
-                posterImage.load("https://image.tmdb.org/t/p/w500${movie.poster_path}") {
+                posterImage.load("${Constants.IMAGE_BASE_URL}w500${movie.poster_path}") {
                     crossfade(true)
                     placeholder(R.drawable.pulse_loader)
                     error(R.drawable.pulse_loader)

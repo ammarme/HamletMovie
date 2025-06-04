@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import coil.load
 import com.android.movieapp.R
 import com.android.movieapp.databinding.FragmentDetailsBinding
+import com.android.movieapp.util.Constants
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -56,13 +57,13 @@ class DetailsFragment : Fragment() {
             originalLanguageText.text =
                 getString(R.string.language_format, movie.original_language.uppercase())
 
-            backdropImage.load("https://image.tmdb.org/t/p/w780${movie.backdrop_path}") {
+            backdropImage.load("${Constants.IMAGE_BASE_URL}w780${movie.backdrop_path}") {
                 crossfade(true)
                 placeholder(R.drawable.pulse_loader)
                 error(R.drawable.pulse_loader)
             }
 
-            posterImage.load("https://image.tmdb.org/t/p/w500${movie.poster_path}") {
+            posterImage.load("${Constants.IMAGE_BASE_URL}w500${movie.poster_path}") {
                 crossfade(true)
                 placeholder(R.drawable.pulse_loader)
                 error(R.drawable.pulse_loader)
@@ -70,7 +71,7 @@ class DetailsFragment : Fragment() {
 
             posterImage.setOnClickListener {
                 val action = DetailsFragmentDirections.actionDetailsFragmentToImageViewerFragment(
-                    imageUrl = "https://image.tmdb.org/t/p/w500${movie.poster_path}"
+                    imageUrl = "${Constants.IMAGE_BASE_URL}w500${movie.poster_path}"
                 )
                 findNavController().navigate(action)
             }
